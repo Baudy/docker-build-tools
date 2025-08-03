@@ -9,8 +9,8 @@ services:
     volumes:
       - gitea-data:/data
     ports:
-      - "3001:3000"
-      - "2222:22"
+      - "3100:3000"    # Gitea web UI
+      - "2222:22"      # Gitea SSH
 
   registry-ui:
     image: joxit/docker-registry-ui:latest
@@ -18,7 +18,7 @@ services:
       - REGISTRY_TITLE=Local Docker Registry
       - REGISTRY_URL=http://registry:5000
     ports:
-      - "8080:80"
+      - "8180:80"      # Registry UI
     depends_on:
       - registry
 
@@ -32,4 +32,3 @@ services:
 volumes:
   gitea-data:
   registry-data:
-

@@ -9,7 +9,7 @@ services:
     volumes:
       - gitea-data:/data
     ports:
-      - "3100:3000"    # Gitea web UI
+      - "3100:3000"    # Gitea web UI - 3000 container, 3100 to the outside
       - "2222:22"      # Gitea SSH
 
   registry-ui:

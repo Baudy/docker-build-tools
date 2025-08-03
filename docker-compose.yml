@@ -9,7 +9,7 @@ services:
     volumes:
       - gitea-data:/data
     ports:
-      - "3000:3000"
+      - "3001:3000"
       - "2222:22"
 
   registry-ui:

@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    volumes:
+      - gitea-data:/data
+    ports:
+      - "3000:3000"
+      - "2222:22"
+
+  registry-ui:
+    image: joxit/docker-registry-ui:latest
+    environment:
+      - REGISTRY_TITLE=Local Docker Registry
+      - REGISTRY_URL=http://registry:5000
+    ports:
+      - "8080:80"
+    depends_on:
+      - registry
+
+  registry:
+    image: registry:2
+    ports:
+      - "5000:5000"
+    volumes:
+      - registry-data:/var/lib/registry
+
+volumes:
+  gitea-data:
+  registry-data:
+
